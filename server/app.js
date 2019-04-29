@@ -1,16 +1,11 @@
 // require("./controller/index")
 import express from 'express'
 import db from './mongodb/db'
-import author from "./models/authors"
+import * as author from "./controller/authors"
 const app = express()
 
-app.get('/', function (req, res) {
-  author.find({ 'author_name': '宋太祖' }, (err, data) => {
-    console.log('------', data)
-    res.json(data)
-  })
-});
+app.get('/author', author.getAuthorByName)
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Example app listening on port 3000!')
 });

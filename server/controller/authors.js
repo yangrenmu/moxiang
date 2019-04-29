@@ -31,5 +31,14 @@ export const jsonToData = () => {
   )
 }
 
-// export const getAuthorBy
+export const getAuthorByName = (req, res) => {
+  const authorName = req.query.authorName
+  console.log('get author', authorName)
+  author.findOne({ 'author_name': authorName }, (err, data) => {
+    if (err) {
+      return next(err)
+    }
+    res.json(data)
+  })
+}
 
